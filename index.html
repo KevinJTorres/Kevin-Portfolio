@@ -6,7 +6,7 @@
   <title>Kevin Torres | Facilities Operations Leader</title>
   <meta name="description" content="Senior facilities operations leader with 25+ years in high-reliability, mission-critical environments. Retired U.S. Navy. Based in San Francisco Bay Area." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -124,10 +124,10 @@
     }
 
     .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 5.5vw, 4.8rem);
       line-height: 1.1;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.04em;
       margin-bottom: 1.4rem;
       color: #fff;
     }
@@ -203,48 +203,69 @@
       transform: translateY(-1px);
     }
 
-    /* Photo placeholder */
+    /* ── HERO SLIDESHOW ── */
     .hero-photo {
       width: 220px;
       height: 270px;
       border-radius: 16px;
-      background: linear-gradient(135deg, var(--navy-mid), var(--steel));
       border: 3px solid rgba(201,168,76,0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
       flex-shrink: 0;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
 
-    .hero-photo::before {
+    .slideshow-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slideshow-slide.active {
+      opacity: 1;
+    }
+
+    .slideshow-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* subtle gold shimmer overlay on the frame */
+    .hero-photo::after {
       content: '';
       position: absolute;
-      bottom: -20px;
+      inset: 0;
+      border-radius: 13px;
+      box-shadow: inset 0 0 0 1px rgba(201,168,76,0.2);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* dot indicators */
+    .slideshow-dots {
+      position: absolute;
+      bottom: 8px;
       left: 50%;
       transform: translateX(-50%);
-      width: 140px;
-      height: 140px;
+      display: flex;
+      gap: 5px;
+      z-index: 3;
+    }
+
+    .slideshow-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: rgba(46,84,115,0.5);
+      background: rgba(255,255,255,0.4);
+      transition: background 0.3s;
     }
 
-    .photo-icon {
-      font-size: 3.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .photo-hint {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-      text-align: center;
-      padding: 0 1rem;
-      position: relative;
-      z-index: 1;
+    .slideshow-dot.active {
+      background: var(--gold);
     }
 
     /* ── STATS BAR ── */
@@ -697,11 +718,63 @@
           <a href="#contact" class="btn btn-outline">Get in Touch</a>
         </div>
       </div>
-      <div class="hero-photo">
-        <img src="assets/img/profile.jpg" alt="Kevin Torres" sytle="width:100%;height:100%;object-fit:cover;border-radius:13px;"
-          </div>
+      <div class="hero-photo" id="heroSlideshow">
+        <!-- slides injected by JS -->
+        <div class="slideshow-dots" id="slideshowDots"></div>
+      </div>
     </div>
   </section>
+
+  <script>
+    (function() {
+      const images = [
+        { src: 'assets/img/profile.jpg',              alt: 'Kevin Torres' },
+        { src: 'assets/img/20250716_174815.jpg',      alt: 'Kevin Torres on the job' },
+        { src: 'assets/img/20211016_171333_2.jpg',    alt: 'Kevin Torres, U.S. Navy' },
+        { src: 'assets/img/20230910_105334.jpg',      alt: 'Kevin Torres traveling' },
+        { src: 'assets/img/20231007_205826.jpg',      alt: 'Kevin Torres' },
+        { src: 'assets/img/20240526_192440.jpg',      alt: 'Kevin Torres at live event' },
+        { src: 'assets/img/20240813_145548.jpg',      alt: 'Kevin Torres' },
+        { src: 'assets/img/20250804_100942.jpg',      alt: 'Kevin Torres at work site' },
+        { src: 'assets/img/about.jpg',                alt: 'Kevin Torres' },
+      ];
+
+      const container = document.getElementById('heroSlideshow');
+      const dotsContainer = document.getElementById('slideshowDots');
+      let current = 0;
+      const slides = [];
+      const dots = [];
+
+      images.forEach((img, i) => {
+        const slide = document.createElement('div');
+        slide.className = 'slideshow-slide' + (i === 0 ? ' active' : '');
+        const el = document.createElement('img');
+        el.src = img.src;
+        el.alt = img.alt;
+        el.loading = i === 0 ? 'eager' : 'lazy';
+        slide.appendChild(el);
+        container.insertBefore(slide, dotsContainer);
+        slides.push(slide);
+
+        const dot = document.createElement('div');
+        dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+      });
+
+      function goTo(next) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = next;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      setInterval(() => {
+        goTo((current + 1) % images.length);
+      }, 4000);
+    })();
+  </script>
 
   <!-- STATS BAR -->
   <div class="stats-bar">
@@ -932,7 +1005,8 @@
       <h2>Let's Talk.</h2>
       <p>I'm actively exploring senior facilities operations and mission-critical infrastructure leadership roles. If you're building a team that needs this kind of background, reach out.</p>
       <div class="contact-links">
-        <a href="https://www.linkedin.com/in/kevinjtorres/" class="btn btn-gold" target="_blank">Connect on LinkedIn</a>
+        <a href="mailto:kevin@kevin-torres.com" class="btn btn-gold">✉ Send an Email</a>
+        <a href="https://www.linkedin.com/in/kevinjtorres/" class="btn btn-outline" target="_blank">Connect on LinkedIn</a>
         <a href="assets/pdf/resume.pdf" class="btn btn-outline" target="_blank">Download Résumé</a>
       </div>
     </div>
