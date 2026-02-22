@@ -3,240 +3,947 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kevin Jon Torres | Senior Facilities Operations Leader</title>
-  <meta name="description" content="Senior facilities operations leader with 25+ years of experience managing complex, high-reliability and mission-critical environments." />
+  <title>Kevin Torres | Facilities Operations Leader</title>
+  <meta name="description" content="Senior facilities operations leader with 25+ years in high-reliability, mission-critical environments. Retired U.S. Navy. Based in San Francisco Bay Area." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f5f4f1;          /* warm off-white */
-      --panel: #ffffff;
-      --text: #1e1e1e;
-      --muted: #5f6a75;
-      --primary: #2f4b66;    /* warmer institutional blue */
-      --secondary: #6b4f3f;  /* subtle warm accent */
-      --border: #d9dee4;
-      --accent: #e7ecef;     /* light blue-gray */
+      --navy:     #0d1f2d;
+      --navy-mid: #1a3349;
+      --steel:    #2e5473;
+      --gold:     #c9a84c;
+      --gold-lt:  #e8c96e;
+      --off-white:#f4f1ec;
+      --warm-gray:#d6cfc4;
+      --text:     #1c1c1c;
+      --muted:    #6b7280;
+      --panel:    #ffffff;
+      --radius:   12px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Inter, Helvetica, Arial, sans-serif;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
       color: var(--text);
-      background: var(--bg);
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
-    /* Top accent bar */
-    .top-bar {
-      height: 6px;
-      background: linear-gradient(
-        to right,
-        var(--primary),
-        var(--secondary)
-      );
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 60px;
+      border-bottom: 2px solid var(--gold);
     }
 
-    .container {
-      max-width: 980px;
+    .nav-logo {
+      color: var(--gold);
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--warm-gray);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding: 6rem 2.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(46,84,115,0.45) 0%, transparent 70%),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.012) 40px,
+          rgba(255,255,255,0.012) 41px
+        );
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 3.5rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
     }
 
-    header {
-      background: var(--panel);
-      padding: 3rem;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      margin-bottom: 4rem;
+    .hero-tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-lt);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
     }
 
-    h1 {
-      font-size: 2.7rem;
-      margin: 0 0 1rem 0;
-      letter-spacing: -0.02em;
-      color: var(--primary);
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
+      color: #fff;
     }
 
-    h2 {
-      font-size: 1.6rem;
-      margin-top: 0;
-      margin-bottom: 1rem;
-      color: var(--primary);
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-lt);
     }
 
-    p {
-      font-size: 1.06rem;
-      margin-bottom: 1.3rem;
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 600px;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      line-height: 1.8;
     }
 
-    .subtitle {
-      font-size: 1.18rem;
-      color: var(--muted);
-      max-width: 760px;
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
     }
 
-    .meta {
-      margin-top: 1.6rem;
-      font-size: 0.95rem;
-      color: var(--muted);
+    .badge {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.8rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
     }
 
-    .actions {
-      margin-top: 2.2rem;
+    .hero-actions {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
     }
 
     .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       text-decoration: none;
-      padding: 0.75rem 1.3rem;
+      padding: 0.75rem 1.5rem;
       border-radius: 8px;
-      border: 1px solid var(--border);
-      color: var(--primary);
-      background: #ffffff;
-      font-weight: 500;
-      transition: all 0.15s ease;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      cursor: pointer;
     }
 
-    .btn.primary {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      border: 2px solid var(--gold);
+    }
+    .btn-gold:hover {
+      background: var(--gold-lt);
+      border-color: var(--gold-lt);
+      transform: translateY(-1px);
     }
 
-    .btn:hover {
-      background: var(--accent);
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.35);
+    }
+    .btn-outline:hover {
+      border-color: white;
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-1px);
     }
 
-    .btn.primary:hover {
-      background: #243b52;
+    /* Photo placeholder */
+    .hero-photo {
+      width: 220px;
+      height: 270px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--navy-mid), var(--steel));
+      border: 3px solid rgba(201,168,76,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
     }
 
-    section {
+    .hero-photo::before {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(46,84,115,0.5);
+    }
+
+    .photo-icon {
+      font-size: 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .photo-hint {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--gold);
+      padding: 1.5rem 2.5rem;
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(13,31,45,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .about-text p {
+      color: #374151;
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .highlight-card {
       background: var(--panel);
-      padding: 2.5rem 3rem;
-      border-radius: 14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      margin-bottom: 3rem;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
 
-    section.alt {
-      background: var(--accent);
+    .highlight-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
     }
 
-    ul {
-      padding-left: 1.2rem;
+    .highlight-card span {
+      color: var(--muted);
+      font-size: 0.88rem;
     }
 
-    li {
-      margin-bottom: 0.85rem;
+    /* ── EXPERIENCE ── */
+    .experience-section {
+      margin-bottom: 5rem;
     }
 
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--warm-gray));
+    }
+
+    .timeline-item {
+      position: relative;
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s;
+    }
+
+    .timeline-item:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.4rem;
+      top: 1.9rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--off-white);
+      box-shadow: 0 0 0 2px var(--gold);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .timeline-role {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: var(--off-white);
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .timeline-org {
+      font-size: 0.9rem;
+      color: var(--steel);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .timeline-item ul {
+      padding-left: 1.1rem;
+      color: #374151;
+      font-size: 0.95rem;
+    }
+
+    .timeline-item li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-section {
+      margin-bottom: 5rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      border-top: 3px solid var(--gold);
+    }
+
+    .skill-card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: var(--off-white);
+      color: var(--navy-mid);
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    /* ── BLOG ── */
+    .blog-section {
+      margin-bottom: 5rem;
+    }
+
+    .blog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2rem;
+    }
+
+    .blog-link {
+      font-size: 0.88rem;
+      color: var(--steel);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .blog-link:hover { color: var(--gold); }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+      border-color: var(--gold);
+    }
+
+    .blog-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+
+    .blog-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .blog-read-more {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--steel);
+    }
+
+    /* Sample post placeholder */
+    .blog-placeholder {
+      grid-column: 1 / -1;
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 3rem;
+      text-align: center;
+      border: 2px dashed var(--warm-gray);
+    }
+
+    .blog-placeholder p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 4rem;
+      text-align: center;
+      margin-bottom: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 100% at 50% 100%, rgba(46,84,115,0.6) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-section * { position: relative; }
+
+    .contact-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .contact-section p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
     footer {
       text-align: center;
-      margin-top: 4rem;
-      font-size: 0.95rem;
+      padding: 2rem;
+      font-size: 0.82rem;
       color: var(--muted);
+      border-top: 1px solid var(--warm-gray);
     }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.78rem; }
+
+      .hero { padding: 3.5rem 1.5rem 3rem; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero-photo { display: none; }
+
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+
+      .content { padding: 3rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+
+      .contact-section { padding: 2.5rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-tag   { animation: fadeUp 0.5s ease both; }
+    .hero h1    { animation: fadeUp 0.5s 0.1s ease both; }
+    .hero-sub   { animation: fadeUp 0.5s 0.2s ease both; }
+    .hero-meta  { animation: fadeUp 0.5s 0.3s ease both; }
+    .hero-actions { animation: fadeUp 0.5s 0.4s ease both; }
+    .hero-photo { animation: fadeUp 0.5s 0.2s ease both; }
   </style>
 </head>
-
 <body>
-  <div class="top-bar"></div>
 
-  <main class="container">
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Kevin Torres</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- HERO -->
-    <header>
-      <h1>Kevin Jon Torres</h1>
-
-      <p class="subtitle">
-        Senior facilities operations leader with over 25 years of experience
-        managing complex portfolios, leading technical teams, and delivering
-        safe, reliable, and cost-effective building operations.
-      </p>
-
-      <p class="meta">
-        Retired U.S. Navy Executive · Emergency & Disaster Management (Georgetown University)<br />
-        High-reliability operations experience across mission-critical and regulated environments
-      </p>
-
-      <div class="actions">
-        <a class="btn primary" href="assets/pdf/resume.pdf" target="_blank">Download Résumé</a>
-        <a class="btn" href="portfolio.html">Selected Case Studies</a>
-        <a class="btn" href="https://www.linkedin.com/in/kevinjtorres/" target="_blank">LinkedIn</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">Open to Senior Leadership Roles</div>
+        <h1>Facilities Leader.<br><em>Built for Mission-Critical.</em></h1>
+        <p class="hero-sub">
+          25+ years turning complex, high-consequence environments into disciplined, 
+          high-performing operations — from nuclear-powered naval vessels to 
+          multi-site facilities portfolios.
+        </p>
+        <div class="hero-meta">
+          <span class="badge">🎖 Retired U.S. Navy Executive</span>
+          <span class="badge">🏛 Georgetown University</span>
+          <span class="badge">📍 San Francisco Bay Area</span>
+        </div>
+        <div class="hero-actions">
+          <a href="assets/pdf/resume.pdf" class="btn btn-gold" target="_blank">
+            ↓ Download Résumé
+          </a>
+          <a href="https://www.linkedin.com/in/kevinjtorres/" class="btn btn-outline" target="_blank">
+            LinkedIn Profile
+          </a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
       </div>
-    </header>
+      <div class="hero-photo">
+        <div class="photo-icon">👤</div>
+        <p class="photo-hint">Replace with your headshot<br>(your-photo.jpg)</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- FACILITIES OPS -->
-    <section>
-      <h2>Facilities Operations Leadership</h2>
-      <p>
-        I specialize in operating buildings as dependable, high-performing workplaces.
-        My leadership scope includes daily operations, preventive maintenance programs,
-        capital improvements, vendor performance, safety, and long-term asset stewardship.
-      </p>
-      <p>
-        My approach is shaped by decades in high-consequence environments where disciplined
-        execution and accountability directly affect people, assets, and mission outcomes.
-      </p>
-    </section>
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div>
+        <div class="stat-num">25+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">USN</div>
+        <div class="stat-label">Retired Executive</div>
+      </div>
+      <div>
+        <div class="stat-num">GU</div>
+        <div class="stat-label">Emergency Management</div>
+      </div>
+      <div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Unplanned Downtime Events</div>
+      </div>
+    </div>
+  </div>
 
-    <!-- OPERATIONAL IMPACT -->
-    <section class="alt">
-      <h2>Selected Operational Impact</h2>
-      <ul>
-        <li>
-          Led multi-site facilities operations supporting technical, industrial,
-          and mission-critical functions with stringent uptime and safety expectations.
-        </li>
-        <li>
-          Directed preventive and corrective maintenance programs to improve asset reliability
-          and reduce operational risk.
-        </li>
-        <li>
-          Delivered infrastructure upgrades and capital projects while maintaining
-          uninterrupted operations in occupied facilities.
-        </li>
-        <li>
-          Built and led accountable internal teams and service partners responsible
-          for compliance, performance, and customer satisfaction.
-        </li>
-      </ul>
-    </section>
+  <!-- MAIN CONTENT -->
+  <div class="content">
 
-    <!-- MISSION CRITICAL -->
-    <section>
-      <h2>Mission-Critical & High-Reliability Experience</h2>
-      <p>
-        In addition to commercial and institutional facilities, my background includes
-        operations in mission-critical and regulated environments where redundancy,
-        emergency preparedness, and procedural discipline are foundational requirements.
-      </p>
-      <p>
-        This experience informs how I manage facilities today — emphasizing resilience,
-        readiness for abnormal conditions, and risk-informed decision-making.
-      </p>
-    </section>
+    <!-- ABOUT -->
+    <div id="about" class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Operational discipline,<br>from sea to building.</h2>
+        <p>
+          My career began aboard nuclear-powered naval vessels, where equipment failure 
+          isn't a budget line — it's a mission risk. That mindset never left me. 
+          For over two decades I've applied the same rigor to facilities operations: 
+          treating every building as a system that must perform, every team member as 
+          someone whose accountability shapes outcomes.
+        </p>
+        <p>
+          I specialize in the intersection of operational reliability and leadership — 
+          building the processes, people, and culture that make complex facilities 
+          run without drama. My Georgetown education in Emergency & Disaster Management 
+          sharpened my understanding of risk, resilience, and continuity planning.
+        </p>
+        <p>
+          I'm currently seeking senior facilities operations or mission-critical 
+          infrastructure leadership roles in the Bay Area and beyond.
+        </p>
+      </div>
+      <div class="about-sidebar">
+        <div class="highlight-card">
+          <strong>Nuclear Operations Background</strong>
+          <span>Trained in the world's highest-reliability operating environments — procedures, redundancy, and zero-defect culture.</span>
+        </div>
+        <div class="highlight-card">
+          <strong>Emergency & Disaster Management</strong>
+          <span>Graduate-level education from Georgetown University in continuity planning, crisis response, and risk management.</span>
+        </div>
+        <div class="highlight-card">
+          <strong>Multi-Site Portfolio Leadership</strong>
+          <span>Led geographically distributed facilities operations with complex technical, regulatory, and team management demands.</span>
+        </div>
+        <div class="highlight-card">
+          <strong>Vendor & Contract Management</strong>
+          <span>Built accountable service partnerships focused on performance, compliance, and cost-effectiveness.</span>
+        </div>
+      </div>
+    </div>
 
-    <!-- FOOTER -->
-    <footer>
-      <p>
-        Based in the San Francisco Bay Area in the United States of America · Open to senior facilities operations and
-        mission-critical infrastructure leadership roles
-      </p>
-    </footer>
+    <!-- EXPERIENCE -->
+    <div id="experience" class="experience-section">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Experience</h2>
 
-  </main>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div class="timeline-role">Senior Facilities Operations Leader</div>
+            <span class="timeline-date">2018 – Present</span>
+          </div>
+          <div class="timeline-org">— Add Your Organization Here</div>
+          <ul>
+            <li>Add your most impressive impact statement here — include numbers where possible (sq ft, budget, team size)</li>
+            <li>Directed preventive and corrective maintenance programs, improving asset reliability and reducing unplanned work orders</li>
+            <li>Delivered capital infrastructure projects on schedule without disrupting occupied operations</li>
+            <li>Built accountable vendor relationships driving measurable improvements in performance and compliance</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div class="timeline-role">Facilities & Operations Manager</div>
+            <span class="timeline-date">2012 – 2018</span>
+          </div>
+          <div class="timeline-org">— Add Your Organization Here</div>
+          <ul>
+            <li>Add your key achievements here — what changed because you were there?</li>
+            <li>Managed daily operations across multiple building types with stringent uptime and safety expectations</li>
+            <li>Implemented safety programs and compliance frameworks across all managed facilities</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div class="timeline-role">Executive / Senior Enlisted Leader</div>
+            <span class="timeline-date">~1990 – 2012</span>
+          </div>
+          <div class="timeline-org">United States Navy (Retired)</div>
+          <ul>
+            <li>Led teams responsible for operating and maintaining nuclear propulsion and shipboard systems in high-consequence environments</li>
+            <li>Cultivated zero-defect operating culture through procedural discipline, training, and individual accountability</li>
+            <li>Managed personnel, qualifications, inspections, and operational readiness across multi-department organizations</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div id="skills" class="skills-section">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">Core Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>Operations & Maintenance</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Preventive Maintenance</span>
+            <span class="skill-tag">CMMS / Work Orders</span>
+            <span class="skill-tag">Asset Management</span>
+            <span class="skill-tag">MEP Systems</span>
+            <span class="skill-tag">Building Automation</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Leadership & Management</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Team Development</span>
+            <span class="skill-tag">Vendor Management</span>
+            <span class="skill-tag">Contract Negotiation</span>
+            <span class="skill-tag">Budget Oversight</span>
+            <span class="skill-tag">Performance Management</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Safety & Compliance</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">OSHA / EHS</span>
+            <span class="skill-tag">Emergency Planning</span>
+            <span class="skill-tag">Regulatory Compliance</span>
+            <span class="skill-tag">Risk Assessment</span>
+            <span class="skill-tag">Incident Response</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Mission-Critical Environments</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">High-Reliability Operations</span>
+            <span class="skill-tag">Nuclear Operations Background</span>
+            <span class="skill-tag">Redundancy Planning</span>
+            <span class="skill-tag">Uptime Management</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Projects & Capital</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Capital Planning</span>
+            <span class="skill-tag">Infrastructure Upgrades</span>
+            <span class="skill-tag">Project Management</span>
+            <span class="skill-tag">Occupied Renovation</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Continuity & Crisis</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Business Continuity</span>
+            <span class="skill-tag">Disaster Recovery</span>
+            <span class="skill-tag">Crisis Management</span>
+            <span class="skill-tag">Georgetown EDM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOG / WRITING -->
+    <div id="writing" class="blog-section">
+      <div class="blog-header">
+        <div>
+          <div class="section-label">Writing</div>
+          <h2 class="section-title" style="margin-bottom:0">Thoughts & Insights</h2>
+        </div>
+        <a href="https://www.linkedin.com/in/kevinjtorres/" target="_blank" class="blog-link">
+          View LinkedIn →
+        </a>
+      </div>
+
+      <!-- SAMPLE POST — duplicate this block to add more posts -->
+      <div class="blog-grid">
+
+        <a href="#" class="blog-card">
+          <div class="blog-date">February 2026</div>
+          <h3>What the Navy Taught Me About Facilities Operations</h3>
+          <p>The same discipline that kept nuclear reactors running smoothly applies directly to managing buildings. Here's what transferred — and what didn't.</p>
+          <div class="blog-read-more">Read more →</div>
+        </a>
+
+        <a href="#" class="blog-card">
+          <div class="blog-date">January 2026</div>
+          <h3>Why "Preventive" Maintenance Is a Mindset, Not a Schedule</h3>
+          <p>Most facilities teams treat PM as a checklist. The best ones treat it as a culture. The difference shows up during the crises you never had.</p>
+          <div class="blog-read-more">Read more →</div>
+        </a>
+
+        <!-- PLACEHOLDER CARD for future posts -->
+        <div style="background:var(--panel);border-radius:var(--radius);padding:1.8rem;border:2px dashed var(--warm-gray);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:0.75rem;">
+          <div style="font-size:1.8rem;">✍️</div>
+          <p style="color:var(--muted);font-size:0.88rem;margin:0;">Your next post goes here.<br>Paste from LinkedIn or write directly.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact" class="contact-section">
+      <h2>Let's Talk.</h2>
+      <p>I'm actively exploring senior facilities operations and mission-critical infrastructure leadership roles. If you're building a team that needs this kind of background, reach out.</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/kevinjtorres/" class="btn btn-gold" target="_blank">Connect on LinkedIn</a>
+        <a href="assets/pdf/resume.pdf" class="btn btn-outline" target="_blank">Download Résumé</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Kevin Torres · San Francisco Bay Area · Built on GitHub Pages</p>
+  </footer>
+
 </body>
 </html>
-
-
-
-
